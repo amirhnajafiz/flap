@@ -16,13 +16,14 @@ class TaskController extends Controller
 
     public function create()
     {
-        return view('task');
+        return view('task_create');
     }
 
     public function store(Request $request)
     {
         $task = Task::query()->create($request->all());
-        return redirect('task.create')
+        return redirect()
+            ->route('task.create')
             ->with('status', 'OK');
     }
 }
