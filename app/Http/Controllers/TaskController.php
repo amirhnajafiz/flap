@@ -23,7 +23,7 @@ class TaskController extends Controller
     {
         $task = Task::query()->create($request->all());
         return redirect()
-            ->route('task.create')
-            ->with('status', 'OK');
+            ->route('task.index')
+            ->with('id', $request->get('user_id'));
     }
 }
