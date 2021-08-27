@@ -9,20 +9,20 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $tasks = Task::query()->where($request->get('id', 1))->get();
-        return view('index')
+        $tasks = Task::query()->where('user_id', $request->get('id', 1))->get();
+        return view('task')
             ->with('tasks', $tasks);
     }
 
     public function create()
     {
-        return view('index');
+        return view('task_create');
     }
 
     public function store(Request $request)
     {
         $task = Task::query()->create($request->all());
-        return redirect('task.index')
+        return redirect('task_create')
             ->with('status', 'OK');
     }
 }
