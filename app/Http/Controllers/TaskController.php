@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $tasks = Task::query()->where('user_id', $request->get('id', 1))->get();
+        if (session('user_id'))
+            $tasks = Task::query()->where('user_id',session('user_id'))->get();
+        else
+            $tasks = [];
         return view('task')
             ->with('tasks', $tasks);
     }
@@ -24,6 +27,6 @@ class TaskController extends Controller
         $task = Task::query()->create($request->all());
         return redirect()
             ->route('task.index')
-            ->with('id', $request->get('user_id'));
+            ->with('user_id', $request->get('user_id'));
     }
 }
