@@ -7,9 +7,15 @@
 
     <a href="{{ route('user.create') }}" class="btn btn-primary">Create User</a>
 
-    <ul class="mt-4">
-        @foreach($users as $user)
-            <li>{{ $user->name }} ({{ $user->email }})</li>
-        @endforeach
-    </ul>
+    @if(count($users) > 0)
+        <ul class="mt-4">
+            @foreach($users as $user)
+                <li>{{ $user->name }} ({{ $user->email }})</li>
+            @endforeach
+        </ul>
+    @else
+        <div class="alter alert-danger">
+            No users yet.
+        </div>
+    @endif
 @stop

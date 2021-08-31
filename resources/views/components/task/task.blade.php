@@ -7,9 +7,15 @@
 
     <a href="{{ route('task.create') }}" class="btn btn-primary">Create Task</a>
 
-    <ul class="mt-4">
-        @foreach($tasks as $task)
-            <li>{{ $task->title }} ({{ $task->description }})</li>
-        @endforeach
-    </ul>
+    @if(count($tasks) > 0)
+        <ul class="mt-4">
+            @foreach($tasks as $task)
+                <li>{{ $task->title }} ({{ $task->description }})</li>
+            @endforeach
+        </ul>
+    @else
+        <div class="alter alert-danger">
+            No users yet.
+        </div>
+    @endif
 @stop
