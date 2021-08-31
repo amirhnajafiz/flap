@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('../../layouts.main')
 
 @section('content')
     <form class="mt-4" method="post" action="{{ route('task.store') }}">

@@ -13,13 +13,13 @@ class TaskController extends Controller
             $tasks = Task::query()->where('user_id',session('user_id'))->get();
         else
             $tasks = [];
-        return view('task')
+        return view('components/task/task')
             ->with('tasks', $tasks);
     }
 
     public function create()
     {
-        return view('task_create');
+        return view('components/task/task_create');
     }
 
     public function store(Request $request)
