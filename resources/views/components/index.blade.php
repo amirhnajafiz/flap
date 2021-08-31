@@ -14,7 +14,7 @@
             @endforeach
         </ul>
     @else
-        <div class="alter alert-danger">
+        <div class="alter alert-danger mt-4 p-2 rounded">
             No users yet.
         </div>
     @endif
