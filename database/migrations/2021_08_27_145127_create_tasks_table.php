@@ -19,7 +19,7 @@ class CreateTasksTable extends Migration
             $table->string("description");
             $table->smallInteger("is_done");
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
