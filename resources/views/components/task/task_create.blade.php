@@ -15,8 +15,14 @@
         </div>
 
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Id</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="user_id">
+            <label for="exampleInputPassword1" class="form-label">User</label>
+            <select class="form-control" id="exampleInputPassword1" name="user_id">
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}">
+                        {{ $user->name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <input type="hidden" name="is_done" value="0" />

@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        if (session('user_id'))
-            $tasks = Task::query()->where('user_id',session('user_id'))->get();
-        else
-            $tasks = [];
+        $tasks = Task::query()->join('users', 'users.id', '=', 'tasks.user_id')
+            ->orderBy('tasks.updated_at')->get();
         return view('components/task/task')
-            ->with('tasks', $tasks);
+            ->with('tasks', $tasks)
+            ->with('status', session('status'));
     }
 
     public function create()
     {
-        return view('components/task/task_create');
+        $users = User::all();
+        return view('components/task/task_create')
+            ->with('users', $users);
     }
 
     public function store(Request $request)
@@ -27,6 +29,6 @@ class TaskController extends Controller
         $task = Task::query()->create($request->all());
         return redirect()
             ->route('task.index')
-            ->with('user_id', $request->get('user_id'));
+            ->with('status', (bool)$task);
     }
 }
