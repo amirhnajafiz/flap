@@ -5,7 +5,9 @@
         <div class="alert alert-success">Task Created Successfully!</div>
     @endif
 
+    @if( \Illuminate\Support\Facades\Auth::check() )
     <a href="{{ route('task.create') }}" class="btn btn-primary">Create Task</a>
+    @endif
 
     @if(count($tasks) > 0)
         <ul class="mt-4" style="list-style-type: none;">

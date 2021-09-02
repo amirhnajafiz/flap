@@ -14,16 +14,7 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="description">
         </div>
 
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">User</label>
-            <select class="form-control" id="exampleInputPassword1" name="user_id">
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}">
-                        {{ $user->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
+        <input type="hidden" name="user_id" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
 
         <input type="hidden" name="is_done" value="0" />
 

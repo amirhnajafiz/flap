@@ -38,3 +38,13 @@ Route::post('task/store', [\App\Http\Controllers\TaskController::class, 'store']
 Route::get('task/{task}', [\App\Http\Controllers\TaskController::class, 'show'])
     ->name('task.show');
 
+Route::post('login', [\App\Http\Controllers\UserController::class, 'login'])
+    ->name('login');
+
+Route::post('logout', [\App\Http\Controllers\UserController::class, 'logout'])
+    ->name('logout');
+
+Route::get('login', function () {
+    return view('components.login');
+})->name('login.page');
+

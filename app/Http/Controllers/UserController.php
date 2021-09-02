@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\traits\Login;
+use App\Http\Controllers\traits\Logout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    use Login;
+    use Logout;
 
     public function index()
     {
@@ -39,7 +43,6 @@ class UserController extends Controller
         User::query()->create($inputs);*/
 
         return redirect()
-            ->route('user.index')
-            ->with('name', $user->name);
+            ->route('login.page');
     }
 }

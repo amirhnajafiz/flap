@@ -5,8 +5,6 @@
         <div class="alert alert-success">User {{ session('name') }} Created Successfully!</div>
     @endif
 
-    <a href="{{ route('user.create') }}" class="btn btn-primary">Create User</a>
-
     @if(count($users) > 0)
         <ul class="mt-4" style="list-style-type: none;">
             @foreach($users as $user)
