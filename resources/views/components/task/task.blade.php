@@ -10,14 +10,9 @@
     @if(count($tasks) > 0)
         <ul class="mt-4" style="list-style-type: none;">
             @foreach($tasks as $task)
-                <li class="border-bottom border-2 mb-2 pb-2">
-                    <div>
-                        {{ $task->title }}
-                    </div>
-                    <div>
-                        {{ $task->description }}
-                    </div>
-                    Update at {{ $task->updated_at }} by {{ $task->name }}
+                <li class="border-bottom border-2">
+                    <x-item title="{{ $task->title }}" content="{{ $task->description }}" more='{{ "Update at " . $task->updated_at . " by " . $task->name }}'>
+                    </x-item>
                 </li>
             @endforeach
         </ul>

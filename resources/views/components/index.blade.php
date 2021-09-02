@@ -10,13 +10,9 @@
     @if(count($users) > 0)
         <ul class="mt-4" style="list-style-type: none;">
             @foreach($users as $user)
-                <li class="border-bottom border-2 mb-2 pb-2">
-                    <div class="mb-1">
-                        Name: {{ $user->name }}
-                    </div>
-                    <div>
-                        Email: {{ $user->email }}
-                    </div>
+                <li class="border-bottom border-2">
+                    <x-Item title="{{ $user->name }}" content="{{ $user->email }}">
+                    </x-Item>
                 </li>
             @endforeach
         </ul>
