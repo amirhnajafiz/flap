@@ -10,8 +10,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::query()->join('users', 'users.id', '=', 'tasks.user_id')
-            ->orderBy('tasks.updated_at')->get();
+        $tasks = Task::all();
         return view('components/task/task')
             ->with('tasks', $tasks)
             ->with('status', session('status'));

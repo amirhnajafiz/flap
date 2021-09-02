@@ -11,7 +11,7 @@
         <ul class="mt-4" style="list-style-type: none;">
             @foreach($tasks as $task)
                 <li class="border-bottom border-2">
-                    <x-item title="{{ $task->title }}" content="{{ $task->description }}" more='{{ "Update at " . $task->updated_at . " by " . $task->name }}'>
+                    <x-item title="{{ $task->title }}" content="{{ $task->description }}" more='{{ "Update at " . $task->updated_at . " by " . $task->user->name }}'>
                     </x-item>
                 </li>
             @endforeach

@@ -13,6 +13,14 @@
                 <li class="border-bottom border-2">
                     <x-Item title="{{ $user->name }}" content="{{ $user->email }}">
                     </x-Item>
+                    <ul class="bg-primary p-2 rounded-1">
+                        @foreach($user->tasks as $task)
+                            <x-item
+                                title="{{ $task->title }}"
+                                content='{{ strlen($task->description) > 50 ? substr($task->description, 0, 47) . "..." : $task->description }}'>
+                            </x-item>
+                        @endforeach
+                    </ul>
                 </li>
             @endforeach
         </ul>
