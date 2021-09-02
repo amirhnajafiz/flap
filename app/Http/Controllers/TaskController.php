@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::query()->where('user_id', '=', Auth::id())->get();
         return view('components/task/task')
             ->with('tasks', $tasks)
             ->with('status', session('status'));
