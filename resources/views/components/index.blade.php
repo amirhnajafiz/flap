@@ -19,6 +19,9 @@
                                 title="{{ $task->title }}"
                                 content='{{ strlen($task->description) > 50 ? substr($task->description, 0, 47) . "..." : $task->description }}'>
                             </x-item>
+                            <a class="text-dark" href="{{ route('task.show', $task) }}" target="_blank">
+                                View task
+                            </a>
                         @endforeach
                     </ul>
                 </li>

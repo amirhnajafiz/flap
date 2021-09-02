@@ -30,4 +30,9 @@ class TaskController extends Controller
             ->route('task.index')
             ->with('status', (bool)$task);
     }
+
+    public function show($id)
+    {
+        return Task::query()->findOrFail($id);
+    }
 }

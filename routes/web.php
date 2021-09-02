@@ -35,4 +35,6 @@ Route::get('task/create', [\App\Http\Controllers\TaskController::class, 'create'
 Route::post('task/store', [\App\Http\Controllers\TaskController::class, 'store'])
     ->name('task.store');
 
+Route::get('task/{task}', [\App\Http\Controllers\TaskController::class, 'show'])
+    ->name('task.show');
 
