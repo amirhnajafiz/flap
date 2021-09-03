@@ -27,6 +27,16 @@
         <x-header>
         </x-header>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @if(isset($message))
             <div class="alert-danger p-2 rounded-1">
                 {{ $message }}

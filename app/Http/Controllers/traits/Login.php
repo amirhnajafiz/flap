@@ -8,6 +8,10 @@ trait Login
 {
     public function login(\Illuminate\Http\Request $request): \Illuminate\Http\RedirectResponse
     {
+        $validate = $request->validate([
+            'email' => 'required|max:128',
+            'password' => 'required|max:128'
+        ]);
         $data = $request->only(['email', 'password']);
         if (Auth::attempt($data))
         {

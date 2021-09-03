@@ -11,6 +11,9 @@ class TaskController extends Controller
 {
     public function index($id = -1)
     {
+        $validate = \Illuminate\Support\Facades\Validator::make(['id' => $id], [
+            'id' => 'exists:App\Models\Task,id'
+        ])->validate();
         if($id == -1)
         {
             $id = Auth::id();
@@ -32,6 +35,10 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'title' => 'required|max:64',
+            'description' => 'required'
+        ]);
         $task = Task::query()->create($request->all());
         return redirect()
             ->route('task.index')
@@ -81,6 +88,9 @@ class TaskController extends Controller
 
     public function trash($id)
     {
+        $validate = \Illuminate\Support\Facades\Validator::make(['id' => $id], [
+            'id' => 'exists:App\Models\User,id'
+        ])->validate();
         $tasks = Task::onlyTrashed()->where('user_id', '=', $id)->get();
         return view('components.task.task_trash')
             ->with('tasks', $tasks)
