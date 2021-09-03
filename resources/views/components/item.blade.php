@@ -13,7 +13,7 @@
                         {{ $more }}
                     </small>
                     <small class="float-end">
-                        <a href="{{ $link }}" target="_blank">
+                        <a href="{{ $link }}">
                             View more
                         </a>
                     </small>

@@ -10,6 +10,10 @@
     </h2>
     <a href="{{ route('task.create') }}" class="btn btn-primary float-end">Create Task</a>
 
+    <h4 class="d-block">
+        Total: {{ count($tasks) }} tasks
+    </h4>
+
     @if(count($tasks) > 0)
         <ul class="mt-4 p-0" style="list-style-type: none;">
             @foreach($tasks as $task)

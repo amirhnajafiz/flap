@@ -37,14 +37,6 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <button class="btn btn-light p-2 rounded">
-                    <a href="{{ route('login') }}">
-                        Visit
-                    </a>
-                </button>
-            </div>
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
                         <g clip-path="url(#clip0)" fill="#EF3B2D">
@@ -127,6 +119,12 @@
                             <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
                                 Sponsor
                             </a>
+
+                            <button style="background-color: #cbd5e0; color: #1a202c; margin-left: 10px; padding: 8px; border-radius: 5px;">
+                                <a href="{{ route('login') }}">
+                                    Visit
+                                </a>
+                            </button>
                         </div>
                     </div>
 

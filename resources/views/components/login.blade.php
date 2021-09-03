@@ -1,8 +1,8 @@
 @extends('../layouts.main')
 
 @section('content')
-    <h2>
-        Login page
+    <h2 class="text-center">
+        <i class="material-icons" style="font-size: 2em;">account_circle</i>
     </h2>
     <form class="mt-4" method="POST" action="{{ route('login') }}">
         @csrf

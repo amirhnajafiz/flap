@@ -1,8 +1,8 @@
 @extends('../../layouts.main')
 
 @section('content')
-    <h2>
-        Register into website
+    <h2 class="text-center">
+        <i class="material-icons" style="font-size: 2em;">person_add</i>
     </h2>
     <form class="mt-4" method="post" action="{{ route('user.store') }}">
         @csrf
@@ -23,6 +23,8 @@
             <input type="password" class="form-control" id="exampleInputPassword1" name="password">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
     </form>
 @stop

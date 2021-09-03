@@ -25,12 +25,15 @@
     @if($task->user->id == \Illuminate\Support\Facades\Auth::id())
         <form action="{{ route('task.update', $task) }}" method="post">
             @csrf
+            @method('put')
             <button type="submit" class="btn btn-{{ $task->is_done == 0 ? 'success' : 'warning' }} mb-2 float-end">
                 {{ $task->is_done == 1 ? 'Undo' : 'Done' }}
             </button>
         </form>
         <form action="{{ route('task.delete', $task) }}" method="post">
             @csrf
+            @method('delete')
+            <input type="hidden" name="_method" value="delete" />
             <button type="submit" class="btn btn-danger d-block">
                 Delete
             </button>

@@ -3,10 +3,14 @@
         <ul class="navbar-nav w-100">
             @if( !\Illuminate\Support\Facades\Auth::check() )
                 <li class="nav-item active">
-                    <a class="nav-link {{ !request()->routeIs('login.page') ?: 'active' }}" href="{{ route('login.page') }}">Login</a>
+                    <a class="nav-link {{ !request()->routeIs('login.page') ?: 'active' }}" href="{{ route('login.page') }}">
+                        Login
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ !request()->routeIs('user.create') ?: 'active' }}" href="{{ route('user.create') }}">Register</a>
+                    <a class="nav-link {{ !request()->routeIs('user.create') ?: 'active' }}" href="{{ route('user.create') }}">
+                        Register
+                    </a>
                 </li>
             @endif
             @if( \Illuminate\Support\Facades\Auth::check() )

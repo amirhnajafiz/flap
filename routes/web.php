@@ -51,9 +51,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('logout', [\App\Http\Controllers\UserController::class, 'logout'])
         ->name('logout');
 
-    Route::post('delete/{id}', [\App\Http\Controllers\TaskController::class, 'delete'])
+    Route::delete('delete/{id}', [\App\Http\Controllers\TaskController::class, 'delete'])
         ->name('task.delete');
 
-    Route::post('update/{id}', [\App\Http\Controllers\TaskController::class, 'toggleToDo'])
+    Route::put('update/{id}', [\App\Http\Controllers\TaskController::class, 'toggleToDo'])
         ->name('task.update');
 });
