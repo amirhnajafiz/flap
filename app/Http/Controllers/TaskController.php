@@ -81,7 +81,9 @@ class TaskController extends Controller
 
     public function trash($id)
     {
-        $tasks = Task::onlyTrashed()->when('user_id', '=', $id)->get();
-        return $tasks;
+        $tasks = Task::onlyTrashed()->where('user_id', '=', $id)->get();
+        return view('components.task.task_trash')
+            ->with('tasks', $tasks)
+            ->with('title', 'trash');
     }
 }

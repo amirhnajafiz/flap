@@ -13,9 +13,15 @@
                         {{ $more }}
                     </small>
                     <small class="float-end">
-                        <a href="{{ $link }}">
-                            View more
-                        </a>
+                        @if($link != "")
+                            <a href="{{ $link }}">
+                                View more
+                            </a>
+                        @else
+                            <del>
+                                View more
+                            </del>
+                        @endif
                     </small>
                 </footer>
             </blockquote>

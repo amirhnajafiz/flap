@@ -23,6 +23,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ !request()->routeIs('task.create') ?: 'active' }}" href="{{ route('task.create') }}">Create Task</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ !request()->routeIs('task.trash') ?: 'active' }}" href="{{ route('task.trash', \Illuminate\Support\Facades\Auth::user()) }}">Trash</a>
+                </li>
             @endif
         </ul>
         @if( \Illuminate\Support\Facades\Auth::check() )

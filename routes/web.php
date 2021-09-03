@@ -56,4 +56,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('update/{id}', [\App\Http\Controllers\TaskController::class, 'toggleToDo'])
         ->name('task.update');
+
+    Route::patch('update/{id}', [\App\Http\Controllers\TaskController::class, 'restore'])
+        ->name('task.restore');
+
+    Route::delete('force/{id}', [\App\Http\Controllers\TaskController::class, 'force'])
+        ->name('task.force');
+
+    Route::get('trash/{user}', [\App\Http\Controllers\TaskController::class, 'trash'])
+        ->name('task.trash');
 });

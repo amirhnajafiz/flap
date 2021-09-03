@@ -37,9 +37,6 @@
             <button type="submit" class="btn btn-danger d-block">
                 Delete
             </button>
-            <small>
-                If you delete the task, you won't be able to restore it again.
-            </small>
         </form>
     @endif
 @stop
