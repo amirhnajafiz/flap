@@ -58,9 +58,30 @@ class TaskController extends Controller
 
     public function delete($id)
     {
-        Task::query()->where('id', '=', $id)->delete();
+        Task::query()->find($id)->delete();
         return redirect()
             ->route('task.index')
             ->with('message', 'Task deleted');
+    }
+
+    public function force($id)
+    {
+        Task::withTrashed()->find($id)->forceDelete();
+        return redirect()
+            ->route('task.index')
+            ->with('message', 'Task deleted');
+    }
+
+    public function restore($id)
+    {
+        Task::withTrashed()->find($id)->restore();
+        return redirect()
+            ->route('task.show', $id);
+    }
+
+    public function trash($id)
+    {
+        $tasks = Task::onlyTrashed()->when('user_id', '=', $id)->get();
+        return $tasks;
     }
 }
