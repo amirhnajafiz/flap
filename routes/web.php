@@ -33,7 +33,7 @@ Route::get('login', function () {
 })->name('login.page');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])
+    Route::get('users/{offset?}', [\App\Http\Controllers\UserController::class, 'index'])
         ->name('user.index');
 
     Route::get('tasks/{user?}', [\App\Http\Controllers\TaskController::class, 'index'])

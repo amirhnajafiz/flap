@@ -14,17 +14,26 @@ class UserController extends Controller
     use Login;
     use Logout;
 
-    public function index()
+    public function index($offset = 0)
     {
-        $users = User::all();
+        $total = User::query()->count();
+
+        if ($offset % 3 != 0) {
+            $offset = $offset - ($offset % 3);
+        }
+        if ($offset > $total) {
+            return back();
+        }
+
+        $users = User::query()->limit(3)->offset($offset)->get();
 
         //return view('index', compact('users')); # Way 1
         return view('components.user.index')
             ->with('users', $users)
-            ->with('foo', 'bar')
-            ->with('number', 1)
             ->with('title', 'users')
-            ->with('message', session('message')); # Way 2
+            ->with('message', session('message'))
+            ->with('offset', $offset)
+            ->with('total', $total); # Way 2
     }
 
     public function create()
@@ -40,6 +49,7 @@ class UserController extends Controller
             'email' => 'required|email:rfc,dns',
             'password' => 'required|min:8'
         ]);
+
         $user = User::query()->create([
             'name' => $request->get('name', 'NO_NAME'),
             'email' => $request->email,

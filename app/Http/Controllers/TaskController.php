@@ -59,7 +59,7 @@ class TaskController extends Controller
         $value = $task->is_done == 1 ? 0 : 1;
         $task->update(['is_done' => $value]);
         return redirect()
-            ->route('task.index')
+            ->route('task.show', $id)
             ->with('message', 'Task updated');
     }
 
@@ -67,7 +67,7 @@ class TaskController extends Controller
     {
         Task::query()->find($id)->delete();
         return redirect()
-            ->route('task.index')
+            ->route('task.index', $id)
             ->with('message', 'Task deleted');
     }
 

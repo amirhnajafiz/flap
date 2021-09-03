@@ -5,9 +5,9 @@
         Recently Deleted
     </h2>
 
-    <h4 class="d-block">
+    <small class="d-block">
         Total: {{ count($tasks) }} tasks
-    </h4>
+    </small>
 
     @if(count($tasks) > 0)
         <ul class="mt-4 p-0" style="list-style-type: none;">

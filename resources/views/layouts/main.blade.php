@@ -23,7 +23,7 @@
             </g>
         </svg>
     </div>
-    <div class="container mt-5 w-50 mr-auto bg-dark text-light p-5 rounded">
+    <div class="container my-5 w-50 mr-auto bg-dark text-light p-5 rounded">
         <x-header>
         </x-header>
 
