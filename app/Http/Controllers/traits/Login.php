@@ -15,8 +15,7 @@ trait Login
                 ->route('user.index')
                 ->with('message', 'Logged in successfully.');
         } else {
-            return redirect()
-                ->route('login.page')
+            return back()
                 ->with('message', 'Email and password match failed.');
         }
     }
