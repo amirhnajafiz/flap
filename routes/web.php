@@ -45,6 +45,6 @@ Route::post('logout', [\App\Http\Controllers\UserController::class, 'logout'])
     ->name('logout');
 
 Route::get('login', function () {
-    return view('components.login');
+    return view('components.login')->with('title', 'login')->with('message', session('message'));
 })->name('login.page');
 

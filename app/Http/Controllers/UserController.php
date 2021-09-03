@@ -21,12 +21,15 @@ class UserController extends Controller
         return view('components.user.index')
             ->with('users', $users)
             ->with('foo', 'bar')
-            ->with('number', 1); # Way 2
+            ->with('number', 1)
+            ->with('title', 'users')
+            ->with('message', session('message')); # Way 2
     }
 
     public function create()
     {
-        return view('components.user.create');
+        return view('components.user.create')
+            ->with('title', 'register');
     }
 
     public function store(Request $request)

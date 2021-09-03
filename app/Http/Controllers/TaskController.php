@@ -14,14 +14,16 @@ class TaskController extends Controller
         $tasks = Task::query()->where('user_id', '=', Auth::id())->get();
         return view('components/task/task')
             ->with('tasks', $tasks)
-            ->with('status', session('status'));
+            ->with('status', session('status'))
+            ->with('title', 'task');
     }
 
     public function create()
     {
         $users = User::all();
         return view('components/task/task_create')
-            ->with('users', $users);
+            ->with('users', $users)
+            ->with('title', 'task - create');
     }
 
     public function store(Request $request)

@@ -9,6 +9,7 @@ trait Logout
     public function logout(): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
-        return redirect()->route('login.page');
+        return redirect()->route('login.page')
+            ->with('message', 'Logged out.');
     }
 }

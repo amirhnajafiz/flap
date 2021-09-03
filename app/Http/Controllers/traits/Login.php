@@ -12,10 +12,12 @@ trait Login
         if (Auth::attempt($data))
         {
             return redirect()
-                ->route('user.index');
+                ->route('user.index')
+                ->with('message', 'Logged in successfully.');
         } else {
             return redirect()
-                ->route('login.page');
+                ->route('login.page')
+                ->with('message', 'Email and password match failed.');
         }
     }
 }
