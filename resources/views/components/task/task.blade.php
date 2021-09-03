@@ -13,7 +13,7 @@
     @if(count($tasks) > 0)
         <ul class="mt-4 p-0" style="list-style-type: none;">
             @foreach($tasks as $task)
-                <li>
+                <li class="{{ $task->is_done == 0 ? 'bg-danger' : 'bg-success' }}">
                     <x-item
                         title="{{ $task->title }}"
                         content="{{ strlen($task->description) > 50 ? substr($task->description, 0, 30) . ' ...' : $task->description }}"
@@ -26,7 +26,7 @@
         </ul>
     @else
         <div class="alter alert-danger mt-4 p-2 rounded">
-            No users yet.
+            No tasks yet.
         </div>
     @endif
 @stop

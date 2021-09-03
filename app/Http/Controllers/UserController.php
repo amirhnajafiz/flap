@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\traits\Login;
 use App\Http\Controllers\traits\Logout;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,10 +41,12 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        /*$inputs = $request->only(['name', 'email', 'password']);
-        $inputs['password'] = Hash::make($inputs['password']);
-
-        User::query()->create($inputs);*/
+        Task::factory()->create([
+            'title' => 'First task',
+            'description' => 'This is your first task, a template task.',
+            'is_done' => 0,
+            'user_id' => $user->id
+        ]);
 
         return redirect()
             ->route('login.page');

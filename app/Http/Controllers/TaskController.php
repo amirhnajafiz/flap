@@ -40,6 +40,27 @@ class TaskController extends Controller
 
     public function show($id)
     {
-        return Task::query()->findOrFail($id);
+        $task = Task::query()->findOrFail($id);
+        return view('components.task.task_show')
+            ->with('task', $task)
+            ->with('title', 'task - view');
+    }
+
+    public function toggleToDo($id)
+    {
+        $task = Task::query()->findOrFail($id);
+        $value = $task->is_done == 1 ? 0 : 1;
+        $task->update(['is_done' => $value]);
+        return redirect()
+            ->route('task.index')
+            ->with('message', 'Task updated');
+    }
+
+    public function delete($id)
+    {
+        Task::query()->where('id', '=', $id)->delete();
+        return redirect()
+            ->route('task.index')
+            ->with('message', 'Task deleted');
     }
 }
