@@ -9,6 +9,7 @@ class Item extends Component
     public $title;
     public $content;
     public $more;
+    public $link;
 
     /**
      * Create a new component instance.
@@ -16,12 +17,14 @@ class Item extends Component
      * @param $title
      * @param $content
      * @param string $more
+     * @param string $link
      */
-    public function __construct($title, $content, $more = "")
+    public function __construct($title, $content, $more = "", $link = "")
     {
         $this->title = $title;
         $this->content = $content;
         $this->more = $more;
+        $this->link = $link;
     }
 
     /**
@@ -34,6 +37,7 @@ class Item extends Component
         return view('components.item')
             ->with('title', $this->title)
             ->with('content', $this->content)
-            ->with('more', $this->more);
+            ->with('more', $this->more)
+            ->with('link', $this->link);
     }
 }

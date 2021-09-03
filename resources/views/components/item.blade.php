@@ -1,11 +1,24 @@
-<div class="my-2 p-2 bg-success text-light rounded-2">
-    <div class="bg-light text-dark p-1 rounded-2">
-        <div class="mb-1">
+<div class="my-2 p-2 text-dark">
+    <div class="card">
+        <div class="card-header">
             {{ $title }}
         </div>
-        <div>
-            {{ $content }}
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>
+                    {{ $content }}
+                </p>
+                <footer class="blockquote-footer mt-1">
+                    <small class="d-inline-block">
+                        {{ $more }}
+                    </small>
+                    <small class="float-end">
+                        <a href="{{ $link }}" target="_blank">
+                            View more
+                        </a>
+                    </small>
+                </footer>
+            </blockquote>
         </div>
     </div>
-    {{ $more }}
 </div>

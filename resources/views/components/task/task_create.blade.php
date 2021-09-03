@@ -1,6 +1,9 @@
 @extends('../../layouts.main')
 
 @section('content')
+    <h2>
+        Create your task
+    </h2>
     <form class="mt-4" method="post" action="{{ route('task.store') }}">
         @csrf
 

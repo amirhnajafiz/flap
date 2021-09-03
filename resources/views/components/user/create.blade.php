@@ -1,6 +1,9 @@
 @extends('../../layouts.main')
 
 @section('content')
+    <h2>
+        Register into website
+    </h2>
     <form class="mt-4" method="post" action="{{ route('user.store') }}">
         @csrf
 

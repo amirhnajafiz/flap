@@ -6,15 +6,20 @@
     @endif
 
     <h2 class="d-inline-block">
-        View your tasks
+        View tasks
     </h2>
     <a href="{{ route('task.create') }}" class="btn btn-primary float-end">Create Task</a>
 
     @if(count($tasks) > 0)
-        <ul class="mt-4" style="list-style-type: none;">
+        <ul class="mt-4 p-0" style="list-style-type: none;">
             @foreach($tasks as $task)
-                <li class="border-bottom border-2">
-                    <x-item title="{{ $task->title }}" content="{{ $task->description }}" more='{{ "Update at " . $task->updated_at . " by " . $task->user->name }}'>
+                <li>
+                    <x-item
+                        title="{{ $task->title }}"
+                        content="{{ strlen($task->description) > 50 ? substr($task->description, 0, 30) . ' ...' : $task->description }}"
+                        more='{{ "Update at " . $task->updated_at . " by " . $task->user->name }}'
+                        link="{{ route('task.show', $task) }}"
+                    >
                     </x-item>
                 </li>
             @endforeach

@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index($id = -1)
     {
-        $tasks = Task::query()->where('user_id', '=', Auth::id())->get();
+        if($id == -1)
+        {
+            $id = Auth::id();
+        }
+        $tasks = Task::query()->where('user_id', '=', $id)->get();
         return view('components/task/task')
             ->with('tasks', $tasks)
             ->with('status', session('status'))

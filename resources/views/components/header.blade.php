@@ -14,7 +14,7 @@
                     <a class="nav-link {{ !request()->routeIs('user.index') ?: 'active' }}" href="{{ route('user.index') }}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ !request()->routeIs('task.index') ?: 'active' }}" href="{{ route('task.index') }}">Tasks</a>
+                    <a class="nav-link {{ !request()->routeIs('task.index') ?: 'active' }}" href="{{ route('task.index', \Illuminate\Support\Facades\Auth::user()) }}">Tasks</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ !request()->routeIs('task.create') ?: 'active' }}" href="{{ route('task.create') }}">Create Task</a>
