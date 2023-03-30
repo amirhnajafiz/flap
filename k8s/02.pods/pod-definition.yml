@@ -1,0 +1,18 @@
+# any deployment has its own api version
+apiVersion: v1
+
+# deployment kind
+kind: Pod
+
+# extra information about deployemnt
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+
+# specific details about pod (like containers)
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
