@@ -33,10 +33,17 @@
                 if (response.status === 200) {
                     el.innerText = 'Connected!';
                     body.style.background = 'green';
+
+                    return response.text()
                 } else {
                     el.innerText = 'Error!';
                     body.style.background = 'yellow';
+
+                    return 'Error!'
                 }
+            })
+            .then(text => {
+                el.innerText = text;
             })
             .catch(err => {
                 console.log(err);
