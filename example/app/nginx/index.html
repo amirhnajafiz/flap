@@ -24,7 +24,25 @@
         Pending ...
     </div>
     <script>
+        let url = 'http://localhost:80';
+        let el = document.getElementById("app");
+        let body = document.getElementsByTagName('body').item(0)
 
+        fetch(url)
+            .then(response => {
+                if (response.status === 200) {
+                    el.innerText = 'Connected!';
+                    body.style.background = 'green';
+                } else {
+                    el.innerText = 'Error!';
+                    body.style.background = 'yellow';
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                el.innerText = 'Not connected!';
+                body.style.background = 'red';
+            });
     </script>
 </body>
 </html>
