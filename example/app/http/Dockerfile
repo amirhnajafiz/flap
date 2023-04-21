@@ -1,6 +1,10 @@
-FROM golang-alpine
+FROM golang:1.20-alpine
+
+WORKDIR src/
 
 COPY go.mod .
+
+COPY . .
 
 RUN go build -o main
 
