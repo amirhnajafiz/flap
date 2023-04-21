@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: sample-http
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-http
+  template:
+    metadata:
+      labels:
+        app: sample-http
+    spec:
+      containers:
+        - name: sample-http
+          image: amirhossein21/sample-http:v0.1.0
+          ports:
+            - containerPort: 80
+              name: sample-http
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: message
+                  name: http-service-configs
