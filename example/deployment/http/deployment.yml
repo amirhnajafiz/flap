@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: sample-http
-          image: amirhossein21/sample-http:v0.1.0
+          image: amirhossein21/sample-http:v0.1.1
           ports:
             - containerPort: 80
               name: sample-http
