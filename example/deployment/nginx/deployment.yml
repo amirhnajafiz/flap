@@ -28,7 +28,7 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           volumeMounts:
-            - mountPath: /etc/nginx/conf.d/
+            - mountPath: /etc/nginx/conf.d
               name: nginx-dir
             - mountPath: /var/cache/nginx/client_temp
               name: nginx-empty
