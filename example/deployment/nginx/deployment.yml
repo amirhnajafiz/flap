@@ -15,11 +15,11 @@ spec:
         app: sample-nginx
     spec:
       containers:
-        - name: sample-http
+        - name: sample-nginx
           image: amirhossein21/sample-nginx:v0.1.0
           ports:
             - containerPort: 80
-              name: sample-http
+              name: sample-nginx
           resources:
             requests:
               memory: "64Mi"
