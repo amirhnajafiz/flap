@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: sample-nginx
-          image: amirhossein21/sample-nginx:v0.1.4
+          image: amirhossein21/sample-nginx:v0.1.6
           ports:
             - containerPort: 8080
               name: sample-nginx
