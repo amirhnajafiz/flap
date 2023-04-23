@@ -12,9 +12,9 @@ func main() {
 		_, _ = w.Write([]byte(os.Getenv("MESSAGE")))
 	})
 
-	log.Println("http server is on 80 ...")
+	log.Println("http server is on 8080 ...")
 
-	if err := http.ListenAndServe(":80", nil); err != nil {
+	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
 }
