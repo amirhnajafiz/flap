@@ -5,7 +5,7 @@ metadata:
   name: sample-nginx
 
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: sample-nginx
@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
         - name: sample-nginx
-          image: amirhossein21/sample-nginx:v0.1.3
+          image: amirhossein21/sample-nginx:v0.1.4
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               name: sample-nginx
           resources:
             requests:
@@ -28,9 +28,9 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           volumeMounts:
-            - mountPath: /etc/nginx/conf.d
+            - mountPath: /etc/nginx/conf.d/
               name: nginx-dir
-            - mountPath: /var/cache/nginx/client_temp
+            - mountPath: /var/cache/nginx/
               name: nginx-empty
             - mountPath: /var/run/
               name: nginx-run
