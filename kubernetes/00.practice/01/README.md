@@ -1,5 +1,7 @@
 # Practice 01
 
+Creating simple useful ```pods```.
+
 ## Nginx pod
 
 ```shell
