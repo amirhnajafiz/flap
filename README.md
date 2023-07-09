@@ -1,3 +1,3 @@
-# kubernetes
+# Kubernetes
 
 What is Kubernetes?
