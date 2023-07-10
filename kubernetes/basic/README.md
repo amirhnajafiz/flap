@@ -1,10 +1,8 @@
-<h1 align="center">
-  Kubernetes
-</h1>
+# Kubernetes
 
-<br />
-
-Learning kubernetes.
+Learn ```Kubernetes``` from basic to high level. In this directory I gathered my notes about
+kubernetes commands and features. These notes are useful for developers who just want to use
+kubernetes cluster in order to deploy their applications.
 
 ## Kubectl commands
 
