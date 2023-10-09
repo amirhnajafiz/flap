@@ -45,7 +45,7 @@ kubectl get replicaset
 A ```ReplicaSet``` can also be a target for ```Horizontal Pod Autoscalers``` (HPA).
 That is, a ```ReplicaSet``` can be auto-scaled by an ```HPA```.
 
-### Example
+### example
 
 ```yml
 apiVersion: autoscaling/v1
@@ -64,3 +64,15 @@ spec:
 ```sh
 kubectl autoscale rs frontend --max=10 --min=3 --cpu-percent=50
 ```
+
+## HPA vs Replicaset
+
+Based on the collected resource usage, HPA will calculate the desired number of replicas required.
+Then, HPA decides to scale up the application to the desired number of replicas.
+Finally, HPA changes the desired number of replicas.
+
+### HPA vs VPA
+
+The HPA ensures that the application has enough resources to handle the workload and that the cluster
+can handle spikes in traffic. The VPA, on the other hand, adjusts the CPU and memory requests and limits
+of the pods based on their actual resource usage.
