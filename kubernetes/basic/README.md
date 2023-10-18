@@ -1,33 +1,29 @@
 # Kubernetes
 
-Learn ```Kubernetes``` from basic to high level. In this directory I gathered my notes about
-kubernetes commands and features. These notes are useful for developers who just want to use
-kubernetes cluster in order to deploy their applications.
+Kubernetes automates operational tasks of container management and includes built-in commands for deploying applications,
+rolling out changes to your applications, scaling your applications up and down to fit changing needs,
+monitoring your applications, and more—making it easier to manage applications. Kubernetes is written in ```Go```.
 
-## Kubectl commands
+The most useful feature of Kubernetes is that it can deploy your applications on more than one physical node.
+It has an scheduler that manages your deployments on nodes.
 
-### get cluster info
+Where you run Kubernetes is up to you. This can be on bare metal servers, virtual machines (VMs),
+public cloud providers, private clouds, and hybrid cloud environments.
+One of Kubernetes’ key advantages is it works on many different kinds of infrastructure.
 
-```kubectl cluster-info```
+Kubernetes has a master node which main components are running in that node. Other nodes
+are compute nodes or worker nodes that communicate with master node by using ```kubelet```.
 
-### get cluster nodes
+Kubernetes main components are listed bellow:
 
-```kubectl get nodes```
+- Kube API server (master)
+- Kube Scheduler (master)
+- Kube Controller-manager (master)
+- ETCD (master)
+- Kubelet (worker)
+- Kube-proxy (worker)
+- Container runtime (worker)
+- Persistent storage
+- Container registery
 
-### create single pod
-
-```kubectl run nginx --image nginx```
-
-### get list of pods
-
-```kubectl get pods```
-
-### deploy a single pod
-
-```kubectl create -f pod-definition.yml```
-
-Check the [definition file](pod-definition.yml).
-
-### get a pod status (inspect pod)
-
-```kubectl describe pod pod-name```
+![Kubernetes Schema](https://www.redhat.com/rhdc/managed-files/kubernetes_diagram-v3-770x717_0_0_v2_0.svg)
