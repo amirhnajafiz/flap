@@ -16,14 +16,14 @@ are compute nodes or worker nodes that communicate with master node by using ```
 
 Kubernetes main components are listed bellow:
 
-- Kube API server (master)
-- Kube Scheduler (master)
-- Kube Controller-manager (master)
-- ETCD (master)
-- Kubelet (worker)
-- Kube-proxy (worker)
-- Container runtime (worker)
-- Persistent storage
-- Container registery
+- Kube API server (master) : connects all of the components together
+- Kube Scheduler (master) : setups pods on nodes
+- Kube Controller-manager (master) : contains all controllers that perform system logic
+- ETCD (master) : a key-value database
+- Kubelet (worker) : manages pods on each node
+- Kube-proxy (worker) : is used to manage each node's network interface
+- Container runtime (worker) : docker, rkt, podman, ...
+- Persistent storage : a long-term memory
+- Container registery : stores and lets you distribute container images
 
 ![Kubernetes Schema](https://www.redhat.com/rhdc/managed-files/kubernetes_diagram-v3-770x717_0_0_v2_0.svg)
