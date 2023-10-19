@@ -24,6 +24,15 @@ kubectl config view --minify | grep namespace:
 
 ## DNS
 
+Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent DNS names instead of IP addresses.
+Services defined in the cluster are assigned DNS names. By default, a client Pod's DNS search list includes the Pod's
+own namespace and the cluster's default domain.
+DNS queries may be expanded using the Pod's ```/etc/resolv.conf```. Kubelet configures this file for each Pod.
+For example, a query for just data may be expanded to ```data.test.svc.cluster.local```.
+The values of the search option are used to expand queries.
+
+### commands
+
 ```shell
 [service name].[namespace].[service].[domain]
 db-service.dev.svc.cluster.local
@@ -105,4 +114,5 @@ kubectl get quota --namespace=myspace
 
 ## links
 
+- [K8S DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 - [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
