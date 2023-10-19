@@ -10,7 +10,7 @@ Labels can be attached to objects at creation time and subsequently added and mo
 Each object can have a set of key/value labels defined.
 Each Key must be unique for a given object.
 
-### Example
+### example
 
 ```yml
 apiVersion: v1
@@ -33,7 +33,7 @@ spec:
 Via a ```label selector```, the client/user can identify a set of objects.
 The label selector is the core grouping primitive in Kubernetes.
 
-### Example
+### example
 
 ```yml
 apiVersion: v1
@@ -51,6 +51,8 @@ spec:
     accelerator: nvidia-tesla-p100
 ```
 
+## commands
+
 ```sh
 kubectl get pods -l environment=production,tier=frontend
 ```
@@ -59,7 +61,9 @@ kubectl get pods -l environment=production,tier=frontend
 kubectl get pods -l 'environment in (production),tier in (frontend)'
 ```
 
-```sh
+### template
+
+```yaml
 selector:
   matchLabels:
     component: redis
