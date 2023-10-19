@@ -10,7 +10,7 @@ and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, e
 - Kube-system
 - Kube-public
 
-## Example
+## example (commands)
 
 ```sh
 kubectl run nginx --image=nginx --namespace=<insert-namespace-name-here>
@@ -74,8 +74,35 @@ When several users or teams share a cluster with a fixed number of nodes,
 there is a concern that one team could use more than its fair share of resources.
 ```Resource quotas``` are a tool for administrators to address this concern.
 
+### example
+
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+    name: pods-medium
+spec:
+    hard:
+      cpu: "10"
+      memory: 20Gi
+      pods: "10"
+    scopeSelector:
+      matchExpressions:
+      - operator : In
+        scopeName: PriorityClass
+        values: ["medium"]
+```
+
+### commands
+
 ```shell
 kubectl create -f compute-quota.yml
 ```
 
-Read more in [here](https://kubernetes.io/docs/concepts/policy/resource-quotas/).
+```shell
+kubectl get quota --namespace=myspace
+```
+
+## links
+
+- [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
