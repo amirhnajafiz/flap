@@ -70,3 +70,4 @@ preempt (evict) some of the existing Pods based on the priority of the new Pod.
 ## links
 
 - [K8S DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+- [Static pods](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/)
