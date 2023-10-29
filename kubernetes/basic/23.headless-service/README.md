@@ -46,3 +46,4 @@ spec:
 
 - [VMware Tanzu](https://docs.vmware.com/en/VMware-Tanzu-Service-Mesh/services/using-tanzu-service-mesh-guide/GUID-38865240-F238-4699-AE75-171EC494F192.html#:~:text=Headless%20service%20is%20a%20regular,named%20ports%20of%20service's%20endpoints.)
 - [Middleware inventory](https://www.middlewareinventory.com/blog/kubernetes-headless-service/)
+- [Why stateful apps need headless service?](https://chamszamouri.medium.com/why-stateful-applications-in-k8s-need-a-headless-service-20d3db993872)
