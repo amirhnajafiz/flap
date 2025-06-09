@@ -1,4 +1,3 @@
-# Kubernetes
+# RadoSH
 
-In this repository I have my notes and comments in order to learn and work with
-```Kubernetes```.
+A C++ cli to interact directly with Ceph object storage.
