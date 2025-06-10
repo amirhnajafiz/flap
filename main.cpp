@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
+#include "src/headers.hpp"
 
 using namespace std;
 
-define SHELL "bash"
-define LIST "ls"
-define META "meta"
-define WRITE "write"
-define READ "read"
+#define SHELL "bash"
+#define LIST "ls"
+#define META "meta"
+#define WRITE "write"
+#define READ "read"
 
 int main() {
     string command;
@@ -18,7 +19,7 @@ int main() {
         // Add shell execution logic here
     } else if (command == LIST) {
         cout << "Listing files..." << endl;
-        // Add file listing logic here
+        listFiles("/path/to/directory");
     } else if (command == META) {
         cout << "Handling metadata..." << endl;
         // Add metadata handling logic here
