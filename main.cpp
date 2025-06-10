@@ -19,7 +19,7 @@ int main() {
         // Add shell execution logic here
     } else if (command == LIST) {
         cout << "Listing files..." << endl;
-        listFiles("/path/to/directory");
+        listPools();
     } else if (command == META) {
         cout << "Handling metadata..." << endl;
         // Add metadata handling logic here
