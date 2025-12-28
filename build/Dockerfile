@@ -30,7 +30,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /usr/local/app
 
 # Copy the files into the working directory
-COPY core/ .
+COPY bpftrace/ .
+COPY tests/ .
+COPY entrypoint/ .
+COPY src/ .
 
 # Set executable permissions for the trace script
 RUN chmod +x /usr/local/app/tests/tracings_test.sh
