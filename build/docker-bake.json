@@ -1,0 +1,32 @@
+{
+  "variable": {
+    "TAG": {
+      "default": "latest"
+    }
+  },
+  "group": {
+    "default": {
+      "targets": ["core", "operator"]
+    }
+  },
+  "target": {
+    "core": {
+      "context": ".",
+      "dockerfile": "build/core/Dockerfile",
+      "tags": [
+        "ghcr.io/amirhnajafiz/flap-core:${TAG}",
+        "ghcr.io/amirhnajafiz/flap-core:latest"
+      ],
+      "output": ["type=registry"]
+    },
+    "operator": {
+      "context": ".",
+      "dockerfile": "build/operator/Dockerfile",
+      "tags": [
+        "ghcr.io/amirhnajafiz/flap-operator:${TAG}",
+        "ghcr.io/amirhnajafiz/flap-operator:latest"
+      ],
+      "output": ["type=registry"]
+    }
+  }
+}

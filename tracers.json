@@ -1,0 +1,17 @@
+{
+    "templates_dir": "templates",
+    "sources_dir": "bpftrace",
+    "inputs_dir": "tracers",
+    "outputs_dir": "bpftrace",
+    "sources": [
+        "io_trace.bt",
+        "memory_trace.bt"
+    ],
+    "inputs": [
+       "cgroup",
+       "cgroup_and_command",
+       "command",
+       "execute",
+       "pid"
+    ]
+}

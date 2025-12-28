@@ -1,0 +1,79 @@
+version: '3.9'
+
+services:
+  # run unit tests to check the bpftrace images before release
+  unit-test:
+    build:
+      context: .
+      dockerfile: build/core/Dockerfile
+    volumes:
+      - /sys:/sys:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    entrypoint: ["/usr/local/app/tests/tracings_test.sh"]
+
+  # trace help only builds the image and runs the help command
+  # to ensure the docker pipeline works without any errors.
+  trace-help:
+    build:
+      context: .
+      dockerfile: build/core/Dockerfile
+    entrypoint: ["python3", "/usr/local/app/entrypoint/app.py"]
+    command: ["-h"]
+
+  # user end-to-end test runs a tracing operation to validate the
+  # program functionality. If it works successfully, you should be able
+  # to see the output in tests/logs directory.
+  e2e:
+    build:
+      context: .
+      dockerfile: build/core/Dockerfile
+    privileged: true
+    network_mode: host
+    pid: host
+    user: root
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /sys:/sys:rw
+      - ./tests/logs:/logs:rw
+    entrypoint: ["python3", "/usr/local/app/entrypoint/app.py"]
+    command: ["-e", "ls", "-o", "/logs/trace_ls"]
+  
+  # the k8s test must be run on a kubernetes node that has kubelet.
+  # you must add the pod, namespace, and container that you want for tracing.
+  # otherwise the test might fail.
+  # in this example we are tracing a prometheus pod on our node.
+  k8s:
+    build:
+      context: .
+      dockerfile: build/core/Dockerfile
+    privileged: true
+    network_mode: host
+    pid: host
+    user: root
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /sys:/sys:rw
+      - ./tests/logs:/logs:rw
+    entrypoint: ["python3", "/usr/local/app/entrypoint/boot.py"]
+    command: [
+      "-o",
+      "/logs/prom-logs",
+      "-p",
+      "prometheus-k8s-0",
+      "-ns",
+      "monitoring",
+      "-c",
+      "prometheus"
+    ]
+
+volumes:
+  logs:
