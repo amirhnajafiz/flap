@@ -1,4 +1,4 @@
-# Tracepoints
+# FLAP (file access patterns)
 
 FLAP relies on the following tracepoints. Among them, only the cgroup tracers do not require child-process tracing tracepoints.
 
