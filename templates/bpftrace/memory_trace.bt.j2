@@ -1,0 +1,172 @@
+{{ begin_section }}
+
+/* creat enter + exit */
+tracepoint:syscalls:sys_enter_creat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN creat}{fname=%s}\n", nsecs, pid, tid, comm, str(args->pathname));
+}
+
+tracepoint:syscalls:sys_exit_creat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX creat}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* open enter + exit */
+tracepoint:syscalls:sys_enter_open
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN open}{fname=%s}\n", nsecs, pid, tid, comm, str(args->filename));
+}
+
+tracepoint:syscalls:sys_exit_open
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX open}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* openat enter + exit */
+tracepoint:syscalls:sys_enter_openat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN openat}{fname=%s}\n", nsecs, pid, tid, comm, str(args->filename));
+}
+
+tracepoint:syscalls:sys_exit_openat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX openat}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* dup enter + exit */
+tracepoint:syscalls:sys_enter_dup
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN dup}{fd=%d}\n", nsecs, pid, tid, comm, args->fildes);
+}
+
+tracepoint:syscalls:sys_exit_dup
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX dup}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* dup2 enter + exit */
+tracepoint:syscalls:sys_enter_dup2
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN dup2}{oldfd=%d newfd=%d}\n", nsecs, pid, tid, comm, args->oldfd, args->newfd);
+}
+
+tracepoint:syscalls:sys_exit_dup2
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX dup2}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* dup3 enter + exit */
+tracepoint:syscalls:sys_enter_dup3
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN dup3}{oldfd=%d newfd=%d}\n", nsecs, pid, tid, comm, args->oldfd, args->newfd);
+}
+
+tracepoint:syscalls:sys_exit_dup3
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX dup3}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* statfs enter + exit */
+tracepoint:syscalls:sys_enter_statfs
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN statfs}{fname=%s}\n", nsecs, pid, tid, comm, str(args->pathname));
+}
+
+tracepoint:syscalls:sys_exit_statfs
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX statfs}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* statx enter + exit */
+tracepoint:syscalls:sys_enter_statx
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN statx}{fname=%s}\n", nsecs, pid, tid, comm, str(args->filename));
+}
+
+tracepoint:syscalls:sys_exit_statx
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX statx}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* newstat enter + exit */
+tracepoint:syscalls:sys_enter_newstat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN newstat}{fname=%s}\n", nsecs, pid, tid, comm, str(args->filename));
+}
+
+tracepoint:syscalls:sys_exit_newstat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX newstat}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* newlstat enter + exit */
+tracepoint:syscalls:sys_enter_newlstat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN newlstat}{fname=%s}\n", nsecs, pid, tid, comm, str(args->filename));
+}
+
+tracepoint:syscalls:sys_exit_newlstat
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX newlstat}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* mmap enter + exit */
+tracepoint:syscalls:sys_enter_mmap
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN mmap}{fd=%d addr=%lu len=%lu}\n", nsecs, pid, tid, comm, args->fd, args->addr, args->len);
+}
+
+tracepoint:syscalls:sys_exit_mmap
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX mmap}{ret=%lu}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* munmap enter + exit */
+tracepoint:syscalls:sys_enter_munmap
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN munmap}{addr=%lu len=%lu}\n", nsecs, pid, tid, comm, args->addr, args->len);
+}
+
+tracepoint:syscalls:sys_exit_munmap
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX munmap}{ret=%lu}\n", nsecs, pid, tid, comm, args->ret);
+}
+
+/* page fault user */
+tracepoint:exceptions:page_fault_user
+{{ filter }}
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN page_fault_user}{addr=%lu}\n", nsecs, pid, tid, comm, args->address);
+  @start[tid] = nsecs;
+}
+
+kretprobe:handle_mm_fault
+/ @start[tid] /
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX handle_mm_fault}{latency=%llu}\n", nsecs, pid, tid, comm, nsecs - @start[tid]);
+  delete(@start[tid]);
+}

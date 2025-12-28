@@ -1,0 +1,9 @@
+#!/usr/bin/env bpftrace
+// dir: src/bpftrace/cgroup
+// log format: [timestamp] {pid=[pid] tid=[tid] proc=[command]}{[EN|EX] [operand]} {[key=value]}
+
+BEGIN
+{
+  @tracked_cgid = (uint64)$1;
+  printf("%s START tracing events for CGROUP ID %llu\n", strftime("%Y-%m-%d %H:%M:%S", nsecs), $1);
+}
