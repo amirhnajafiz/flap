@@ -2,6 +2,7 @@
 .github/
 
 build/
+templates/
 k8s/
 tests/
 

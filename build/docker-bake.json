@@ -6,25 +6,16 @@
   },
   "group": {
     "default": {
-      "targets": ["core", "operator"]
+      "targets": ["core"]
     }
   },
   "target": {
     "core": {
       "context": ".",
-      "dockerfile": "build/core/Dockerfile",
+      "dockerfile": "build/Dockerfile",
       "tags": [
-        "ghcr.io/amirhnajafiz/flap-core:${TAG}",
-        "ghcr.io/amirhnajafiz/flap-core:latest"
-      ],
-      "output": ["type=registry"]
-    },
-    "operator": {
-      "context": ".",
-      "dockerfile": "build/operator/Dockerfile",
-      "tags": [
-        "ghcr.io/amirhnajafiz/flap-operator:${TAG}",
-        "ghcr.io/amirhnajafiz/flap-operator:latest"
+        "ghcr.io/amirhnajafiz/flap:${TAG}",
+        "ghcr.io/amirhnajafiz/flap:latest"
       ],
       "output": ["type=registry"]
     }
