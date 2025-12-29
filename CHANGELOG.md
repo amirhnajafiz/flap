@@ -22,4 +22,3 @@
   * Run tracing as a daemonset container within the host
   * Easier to ensure tracing running before process
   * Difficult to differentiate between the same process in different replica pods
-

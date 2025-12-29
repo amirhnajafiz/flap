@@ -6,16 +6,16 @@
   },
   "group": {
     "default": {
-      "targets": ["core"]
+      "targets": ["flak"]
     }
   },
   "target": {
-    "core": {
+    "flak": {
       "context": ".",
       "dockerfile": "build/Dockerfile",
       "tags": [
-        "ghcr.io/amirhnajafiz/flap:${TAG}",
-        "ghcr.io/amirhnajafiz/flap:latest"
+        "ghcr.io/amirhnajafiz/flak:${TAG}",
+        "ghcr.io/amirhnajafiz/flak:latest"
       ],
       "output": ["type=registry"]
     }

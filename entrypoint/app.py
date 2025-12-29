@@ -53,7 +53,7 @@ def init_vars(args: argparse.Namespace):
 def main():
     # create an argument parser
     parser = argparse.ArgumentParser(
-        description="File Access Patterns (aka FLAP) tracing tool. Enabling I/O tracing for processes."
+        description="File Logging & Access Kernel-tracer (aka FLAK) is an eBPF-based tracing tool that monitors file access patterns over regular I/O operations and memory map operations."
     )
 
     # required arguments
