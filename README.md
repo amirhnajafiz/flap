@@ -1,6 +1,8 @@
-# FLAP (file access patterns)
+# FLAK (file access patterns)
 
-FLAP relies on the following tracepoints. Among them, only the cgroup tracers do not require child-process tracing tracepoints.
+File Logging & Access Kernel-tracer (aka FLAK) is an eBPF-based tracing tool that monitors file access patterns over regular I/O operations and memory map operations.
+
+FLAK relies on the following tracepoints. Among them, only the cgroup tracers do not require child-process tracing tracepoints.
 
 ## I/O Operation Syscalls
 
