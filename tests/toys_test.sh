@@ -6,11 +6,8 @@ cd tests/toys
 make all
 cd ../..
 
-./tests/toys/bin/copy ./tests/toys/src/copy.c ./tests/toys/bin/copied.c
-exit 0
-
 # run the tracer on the copy toy
-PYTHONPATH=. python3 entrypoint/app.py -ex "./toys/bin/copy ./toys/src/copy.c ./toys/bin/copied.c" --debug --out "/tmp/flak-toy-copy"
+PYTHONPATH=. python3 entrypoint/app.py -ex "./tests/toys/bin/copy ./tests/toys/src/copy.c ./tests/toys/bin/copied.c" --debug --out "/tmp/flak-toy-copy"
 
 # run the tracer on the mmap toy
-PYTHONPATH=. python3 entrypoint/app.py -ex "./toys/bin/mmap ./toys/src/mmap.c ./toys/bin/mapped.c" --debug --out "/tmp/flak-toy-mmap"
+PYTHONPATH=. python3 entrypoint/app.py -ex "./tests/toys/bin/mmap ./tests/toys/src/mmap.c ./tests/toys/bin/mapped.c" --debug --out "/tmp/flak-toy-mmap"
