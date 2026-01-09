@@ -2,10 +2,11 @@
 # file: tests/toyes_test.sh
 
 # build the toys into binary files
-cd toys
+cd tests/toys
 make all
+cd ../..
 
-./toys/bin/copy ./toys/src/copy.c ./toys/bin/copied.c
+./tests/toys/bin/copy ./tests/toys/src/copy.c ./tests/toys/bin/copied.c
 exit 0
 
 # run the tracer on the copy toy
