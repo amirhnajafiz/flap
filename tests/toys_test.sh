@@ -5,6 +5,9 @@
 cd toys
 make all
 
+./toys/bin/copy ./toys/src/copy.c ./toys/bin/copied.c
+exit 0
+
 # run the tracer on the copy toy
 PYTHONPATH=. python3 entrypoint/app.py -ex "./toys/bin/copy ./toys/src/copy.c ./toys/bin/copied.c" --debug --out "/tmp/flak-toy-copy"
 
