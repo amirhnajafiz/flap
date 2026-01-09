@@ -14,4 +14,4 @@ PYTHONPATH=. python3 entrypoint/app.py -ex "./tests/toys/bin/mmap ./tests/toys/s
 
 # cleanup
 rm -f /tmp/copied.c
-rm -f /tmp/mmaped.c
+rm -f /tmp/mapped.c
