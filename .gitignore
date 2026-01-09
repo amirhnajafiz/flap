@@ -71,6 +71,8 @@ Desktop.ini
 
 # Python
 __pycache__/
+myvenv/
+venv/
 
 # Exec file
 main
