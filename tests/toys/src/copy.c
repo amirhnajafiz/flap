@@ -10,8 +10,7 @@ int main(int argc, char **argv)
 {
     if (argc != 3)
     {
-        printf("must provide exactly 2 
-            input arguments: <source_path> <dest_path>\n");
+        printf("must provide exactly 2 input arguments: <source_path> <dest_path>\n");
         exit(1);
     }
 
