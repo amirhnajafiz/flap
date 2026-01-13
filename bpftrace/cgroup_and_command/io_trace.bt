@@ -139,6 +139,19 @@ tracepoint:syscalls:sys_exit_newlstat
   printf("%llu {pid=%d tid=%d proc=%s}{EX newlstat}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
 }
 
+/* close enter + exit */
+tracepoint:syscalls:sys_enter_close
+/ cgroup == @tracked_cgid && comm == @tracked_comm /
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EN close}{fd=%d}\n", nsecs, pid, tid, comm, args->fd);
+}
+
+tracepoint:syscalls:sys_exit_close
+/ cgroup == @tracked_cgid && comm == @tracked_comm /
+{
+  printf("%llu {pid=%d tid=%d proc=%s}{EX close}{ret=%d}\n", nsecs, pid, tid, comm, args->ret);
+}
+
 /* read enter + exit */
 tracepoint:syscalls:sys_enter_read
 / cgroup == @tracked_cgid && comm == @tracked_comm /
